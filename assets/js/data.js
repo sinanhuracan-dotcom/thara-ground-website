@@ -156,7 +156,7 @@
         L('Broccoli', 'بروكلي', '西兰花'),
         L('Mushroom, fresh', 'فطر طازج', '新鲜蘑菇')
       ]},
-      { slug: 'citrus', icon: '🍊', hue: 30, name: N('Citrus', 'الحمضيات', '柑橘类'), items: [
+      { slug: 'citrus', image: 'img/citrus.jpg', icon: '🍊', hue: 30, name: N('Citrus', 'الحمضيات', '柑橘类'), items: [
         L('Orange', 'برتقال', '橙子'),
         L('Mandarin', 'يوسفي', '橘子'),
         L('Lemon, local', 'ليمون محلي', '本地柠檬'),

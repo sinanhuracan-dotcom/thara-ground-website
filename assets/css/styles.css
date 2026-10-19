@@ -720,3 +720,6 @@ html[dir="rtl"] .bn-order .bn-bg img { left: auto; right: 0; width: 150%; }
 
 .logo-tile { display: grid; place-items: center; background: #fff; border-radius: 20px; padding: 8px 14px; box-shadow: 0 6px 20px rgba(0, 0, 0, .2); }
 #brands .logo-tile .logo-img { height: clamp(56px, 6vw, 80px); margin: 0; }
+
+/* WhatsApp button on the left side */
+.wa-float { right: auto; left: max(16px, env(safe-area-inset-left, 0px)); }

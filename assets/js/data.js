@@ -149,7 +149,7 @@
         L('Methi leaves (fenugreek)', 'حلبة خضراء', '葫芦巴叶'),
         L('Korat leaves', 'ورق كورات', 'Korat叶')
       ]},
-      { slug: 'cabbage-broccoli', icon: '🥦', hue: 120, name: N('Cabbage, Broccoli & Mushrooms', 'الملفوف والبروكلي والفطر', '甘蓝、西兰花与蘑菇'), items: [
+      { slug: 'cabbage-broccoli', image: 'img/cabbage-broccoli.jpg', icon: '🥦', hue: 120, name: N('Cabbage, Broccoli & Mushrooms', 'الملفوف والبروكلي والفطر', '甘蓝、西兰花与蘑菇'), items: [
         L('Cabbage, white', 'ملفوف أبيض', '圆白菜'),
         L('Cabbage, red', 'ملفوف أحمر', '紫甘蓝'),
         L('Cauliflower, local', 'قرنبيط محلي', '本地花椰菜'),

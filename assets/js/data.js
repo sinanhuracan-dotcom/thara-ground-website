@@ -179,7 +179,7 @@
         L('Raspberry', 'توت العليق', '树莓'),
         L('Red currant', 'كشمش أحمر', '红醋栗')
       ]},
-      { slug: 'melons', icon: '🍉', hue: 350, name: N('Melons', 'البطيخ والشمام', '西瓜与甜瓜'), items: [
+      { slug: 'melons', image: 'img/melons.jpg', icon: '🍉', hue: 350, name: N('Melons', 'البطيخ والشمام', '西瓜与甜瓜'), items: [
         L('Watermelon', 'بطيخ', '西瓜'),
         L('Sweet melon', 'شمام', '甜瓜')
       ]},

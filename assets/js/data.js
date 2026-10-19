@@ -22,7 +22,7 @@
     company: {
       phone: '+966 55 504 2596',
       email: 'sinanhuracan@gmail.com',
-      whatsapp: '966555632845',                    // digits only, with country code
+      whatsapp: '966555042596',                    // digits only, with country code
       portalUrl: '',          // leave empty until you build a buyer portal; when filled, the site shows portal buttons
       portalLoginUrl: '',
       accessSubject: 'Business access request',

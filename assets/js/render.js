@@ -451,7 +451,7 @@
       } else {
         out += legalMain(ctx);
       }
-      return out + footer(ctx) + waFloat(ctx);
+      return out + footer(ctx);
     }
 
     function title(ctx) {

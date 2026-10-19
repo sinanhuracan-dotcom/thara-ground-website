@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B2216"/><stop offset="1" stop-color="#1D5232"/></linearGradient>
+    <radialGradient id="tom" cx=".34" cy=".3" r=".85"><stop offset="0" stop-color="#FF7A5C"/><stop offset="1" stop-color="#BE1E19"/></radialGradient>
+    <radialGradient id="ora" cx=".34" cy=".3" r=".85"><stop offset="0" stop-color="#FFC15E"/><stop offset="1" stop-color="#E8730C"/></radialGradient>
+    <radialGradient id="lem" cx=".34" cy=".3" r=".85"><stop offset="0" stop-color="#FFF08A"/><stop offset="1" stop-color="#E2B400"/></radialGradient>
+    <radialGradient id="app" cx=".34" cy=".3" r=".85"><stop offset="0" stop-color="#A5E36A"/><stop offset="1" stop-color="#3C9A2B"/></radialGradient>
+    <radialGradient id="grp" cx=".34" cy=".3" r=".85"><stop offset="0" stop-color="#B98BE0"/><stop offset="1" stop-color="#5A2A8C"/></radialGradient>
+    <radialGradient id="mel" cx=".34" cy=".3" r=".85"><stop offset="0" stop-color="#FF8FA3"/><stop offset="1" stop-color="#D92B52"/></radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g opacity=".10" stroke="#fff" stroke-width="2"><path d="M0 720h1600M0 790h1600M0 860h1600"/></g>
+  <!-- leaves -->
+  <g fill="#2E8F4E" opacity=".75">
+    <path d="M1000 140c80-60 190-40 230 30-70 50-190 50-230-30z"/>
+    <path d="M1380 80c60 40 90 120 50 190-80-30-110-120-50-190z"/>
+    <path d="M820 520c60-40 150-20 180 40-60 40-150 30-180-40z"/>
+  </g>
+  <!-- tomato -->
+  <circle cx="1190" cy="380" r="200" fill="url(#tom)"/>
+  <path d="M1190 190l-34 40 34-12 34 12z" fill="#2E8F4E"/><path d="M1150 205c20-18 60-18 80 0-22 6-58 6-80 0z" fill="#2E8F4E"/>
+  <ellipse cx="1130" cy="300" rx="42" ry="26" fill="#fff" opacity=".2" transform="rotate(-28 1130 300)"/>
+  <!-- orange -->
+  <circle cx="1440" cy="610" r="160" fill="url(#ora)"/>
+  <ellipse cx="1390" cy="550" rx="34" ry="20" fill="#fff" opacity=".22" transform="rotate(-28 1390 550)"/>
+  <circle cx="1440" cy="458" r="7" fill="#2E8F4E"/>
+  <!-- lemon -->
+  <ellipse cx="980" cy="690" rx="150" ry="108" fill="url(#lem)" transform="rotate(-14 980 690)"/>
+  <ellipse cx="930" cy="650" rx="30" ry="16" fill="#fff" opacity=".28" transform="rotate(-30 930 650)"/>
+  <!-- green apple -->
+  <circle cx="1270" cy="800" r="120" fill="url(#app)"/>
+  <ellipse cx="1230" cy="760" rx="28" ry="16" fill="#fff" opacity=".24" transform="rotate(-28 1230 760)"/>
+  <!-- watermelon slice -->
+  <circle cx="780" cy="240" r="130" fill="url(#mel)"/>
+  <path d="M650 240a130 130 0 0 0 260 0z" fill="#1F7A3C" opacity=".0"/>
+  <g fill="#2B1A17" opacity=".75"><ellipse cx="740" cy="215" rx="7" ry="12"/><ellipse cx="800" cy="195" rx="7" ry="12"/><ellipse cx="830" cy="255" rx="7" ry="12"/><ellipse cx="760" cy="280" rx="7" ry="12"/></g>
+  <!-- grapes -->
+  <g fill="url(#grp)">
+    <circle cx="1500" cy="200" r="38"/><circle cx="1442" cy="224" r="38"/><circle cx="1556" cy="236" r="38"/>
+    <circle cx="1490" cy="262" r="38"/><circle cx="1430" cy="282" r="36"/><circle cx="1548" cy="298" r="36"/>
+    <circle cx="1496" cy="330" r="36"/>
+  </g>
+  <g fill="#fff" opacity=".22"><circle cx="1488" cy="188" r="10"/><circle cx="1430" cy="212" r="10"/><circle cx="1544" cy="224" r="10"/></g>
+  <!-- crate -->
+  <g>
+    <rect x="860" y="760" width="520" height="140" rx="10" fill="#7A5230" opacity=".55"/>
+    <g stroke="#0B2216" stroke-width="6" opacity=".55"><path d="M860 800h520M860 846h520"/></g>
+  </g>
+</svg>

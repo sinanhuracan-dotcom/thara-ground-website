@@ -77,7 +77,7 @@
 
     // 13 product categories. Each has its own page: categories/<slug>.html
     categories: [
-      { slug: 'tomatoes', icon: '🍅', hue: 8, name: N('Tomatoes', 'الطماطم', '番茄'), items: [
+      { slug: 'tomatoes', image: 'img/tomatoes.jpg', icon: '🍅', hue: 8, name: N('Tomatoes', 'الطماطم', '番茄'), items: [
         L('Tomato', 'طماطم', '番茄'),
         L('Cherry tomato (250 g)', 'طماطم كرزية (250 جم)', '圣女果（250克）'),
         L('Cherry tomato, yellow', 'طماطم كرزية صفراء', '黄色圣女果')

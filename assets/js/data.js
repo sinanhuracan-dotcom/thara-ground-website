@@ -114,7 +114,7 @@
         L('Garlic (China)', 'ثوم صيني', '中国大蒜'),
         L('Ginger (China)', 'زنجبيل صيني', '中国生姜')
       ]},
-      { slug: 'peppers-eggplant', icon: '🫑', hue: 130, name: N('Peppers & Eggplant', 'الفلفل والباذنجان', '辣椒与茄子'), items: [
+      { slug: 'peppers-eggplant', image: 'img/peppers-eggplant.jpg', icon: '🫑', hue: 130, name: N('Peppers & Eggplant', 'الفلفل والباذنجان', '辣椒与茄子'), items: [
         L('Capsicum, green', 'فلفل أخضر', '青椒'),
         L('Capsicum, red', 'فلفل أحمر', '红椒'),
         L('Capsicum, yellow', 'فلفل أصفر', '黄椒'),

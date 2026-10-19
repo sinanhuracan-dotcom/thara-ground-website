@@ -106,7 +106,7 @@
         L('Radish, white', 'فجل أبيض', '白萝卜'),
         L('Turnip', 'لفت', '芜菁')
       ]},
-      { slug: 'onions-garlic', icon: '🧅', hue: 28, name: N('Onions, Garlic & Ginger', 'البصل والثوم والزنجبيل', '洋葱、大蒜与生姜'), items: [
+      { slug: 'onions-garlic', image: 'img/onions-garlic.jpg', icon: '🧅', hue: 28, name: N('Onions, Garlic & Ginger', 'البصل والثوم والزنجبيل', '洋葱、大蒜与生姜'), items: [
         L('Onion', 'بصل', '洋葱'),
         L('Onion, white', 'بصل أبيض', '白洋葱'),
         L('Spring onion', 'بصل أخضر', '小葱'),

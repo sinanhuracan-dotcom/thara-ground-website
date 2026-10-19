@@ -72,7 +72,7 @@
       { id: 'customers',  value: 1000,    suffix: '+' },
       { id: 'employees',  value: 150,     suffix: '+' },
       { id: 'tonnes',     value: 20000,   suffix: ''  },
-      { id: 'warehouses', value: 3,       suffix: ''  }
+      { id: 'warehouses', value: 2,       suffix: ''  }
     ],
 
     // 13 product categories. Each has its own page: categories/<slug>.html

@@ -163,7 +163,7 @@
         L('Lemon, imported', 'ليمون مستورد', '进口柠檬'),
         L('Lemon, green (lime)', 'ليمون أخضر', '青柠')
       ]},
-      { slug: 'apples-pears', icon: '🍎', hue: 0, name: N('Apples & Pears', 'التفاح والكمثرى', '苹果与梨'), items: [
+      { slug: 'apples-pears', image: 'img/apples-pears.jpg', icon: '🍎', hue: 0, name: N('Apples & Pears', 'التفاح والكمثرى', '苹果与梨'), items: [
         L('Apple, red', 'تفاح أحمر', '红苹果'),
         L('Apple, green', 'تفاح أخضر', '青苹果'),
         L('Pear', 'كمثرى', '梨')

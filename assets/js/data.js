@@ -95,7 +95,7 @@
         L('Drumstick (moringa)', 'مورينجا (درمستيك)', '辣木荚'),
         L('Green beans', 'فاصوليا خضراء', '四季豆')
       ]},
-      { slug: 'potatoes-roots', icon: '🥔', hue: 35, name: N('Potatoes & Roots', 'البطاطس والجذور', '土豆与根茎类'), items: [
+      { slug: 'potatoes-roots', image: 'img/potatoes-roots.jpg', icon: '🥔', hue: 35, name: N('Potatoes & Roots', 'البطاطس والجذور', '土豆与根茎类'), items: [
         L('Potato, big', 'بطاطس كبيرة', '大土豆'),
         L('Sweet potato', 'بطاطا حلوة', '红薯'),
         L('Yam', 'يام', '山药'),

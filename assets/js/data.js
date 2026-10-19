@@ -82,7 +82,7 @@
         L('Cherry tomato (250 g)', 'طماطم كرزية (250 جم)', '圣女果（250克）'),
         L('Cherry tomato, yellow', 'طماطم كرزية صفراء', '黄色圣女果')
       ]},
-      { slug: 'cucumbers-squash', icon: '🥒', hue: 110, name: N('Cucumbers, Squash & Pods', 'الخيار والكوسا والقرنيات', '黄瓜、瓜类与豆荚'), items: [
+      { slug: 'cucumbers-squash', image: 'img/cucumbers-squash.jpg', icon: '🥒', hue: 110, name: N('Cucumbers, Squash & Pods', 'الخيار والكوسا والقرنيات', '黄瓜、瓜类与豆荚'), items: [
         L('Cucumber', 'خيار', '黄瓜'),
         L('Marrow', 'كوسا', '西葫芦'),
         L('Marrow, small', 'كوسا صغيرة', '小西葫芦'),

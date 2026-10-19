@@ -168,7 +168,7 @@
         L('Apple, green', 'تفاح أخضر', '青苹果'),
         L('Pear', 'كمثرى', '梨')
       ]},
-      { slug: 'grapes-berries', icon: '🍇', hue: 285, name: N('Grapes & Berries', 'العنب والتوت', '葡萄与浆果'), items: [
+      { slug: 'grapes-berries', image: 'img/grapes-berries.jpg', icon: '🍇', hue: 285, name: N('Grapes & Berries', 'العنب والتوت', '葡萄与浆果'), items: [
         L('Grapes, black seedless', 'عنب أسود بدون بذور', '无籽黑葡萄'),
         L('Grapes, green', 'عنب أخضر', '青葡萄'),
         L('Grapes, red', 'عنب أحمر', '红葡萄'),

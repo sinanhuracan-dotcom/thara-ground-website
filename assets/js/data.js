@@ -124,7 +124,7 @@
         L('Eggplant, white small', 'باذنجان أبيض صغير', '小白茄'),
         L('Baby eggplant', 'باذنجان صغير', '小茄子')
       ]},
-      { slug: 'leafy-herbs', icon: '🥬', hue: 95, name: N('Leafy Greens & Herbs', 'الورقيات والأعشاب', '叶菜与香草'), items: [
+      { slug: 'leafy-herbs', image: 'img/leafy-herbs.jpg', icon: '🥬', hue: 95, name: N('Leafy Greens & Herbs', 'الورقيات والأعشاب', '叶菜与香草'), items: [
         L('Lettuce, iceberg', 'خس آيسبرغ', '冰山生菜'),
         L('Lettuce, local', 'خس محلي', '本地生菜'),
         L('Lettuce, Lollo Biondo', 'خس لولو بيوندو', '绿叶生菜（Lollo Biondo）'),

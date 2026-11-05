@@ -42,9 +42,9 @@
 
     // "What we supply": three cards on the home page. cats = category slugs counted in the card.
     divisions: [
-      { id: 'veg',   image: 'img/vegetables.jpg', cats: ['tomatoes','cucumbers-squash','potatoes-roots','onions-garlic','peppers-eggplant','cabbage-broccoli'], link: 'tomatoes' },
-      { id: 'fruit', image: 'img/fruits.jpg', cats: ['citrus','apples-pears','grapes-berries','melons','tropical-fruit','stone-fruit-pomegranate'], link: 'citrus' },
-      { id: 'leafy', image: 'img/leafy.jpg', cats: ['leafy-herbs'], link: 'leafy-herbs' }
+      { id: 'veg',   image: 'img/vegetables.webp', cats: ['tomatoes','cucumbers-squash','potatoes-roots','onions-garlic','peppers-eggplant','cabbage-broccoli'], link: 'tomatoes' },
+      { id: 'fruit', image: 'img/fruits.webp', cats: ['citrus','apples-pears','grapes-berries','melons','tropical-fruit','stone-fruit-pomegranate'], link: 'citrus' },
+      { id: 'leafy', image: 'img/leafy.webp', cats: ['leafy-herbs'], link: 'leafy-herbs' }
     ],
 
     // Customer quotes and gallery photos. Both sections stay hidden while these lists are empty.
@@ -59,7 +59,7 @@
     images: { ext: 'svg' },
 
     hero: {
-      image: 'img/hero.jpg',   // path inside /assets: your trucks and warehouse photo (JPG or WebP).
+      image: 'img/hero.webp',   // path inside /assets: your trucks and warehouse photo (JPG or WebP).
       video: '',               // optional: e.g. 'video/hero.mp4'. Leave empty to use the image.
       slides: 1,               // 1 = a single fixed message. (Rotating tabs were removed.)
       slideMs: 7000
@@ -77,12 +77,12 @@
 
     // 13 product categories. Each has its own page: categories/<slug>.html
     categories: [
-      { slug: 'tomatoes', image: 'img/tomatoes.jpg', icon: '🍅', hue: 8, name: N('Tomatoes', 'الطماطم', '番茄'), items: [
+      { slug: 'tomatoes', image: 'img/tomatoes.webp', icon: '🍅', hue: 8, name: N('Tomatoes', 'الطماطم', '番茄'), items: [
         L('Tomato', 'طماطم', '番茄'),
         L('Cherry tomato (250 g)', 'طماطم كرزية (250 جم)', '圣女果（250克）'),
         L('Cherry tomato, yellow', 'طماطم كرزية صفراء', '黄色圣女果')
       ]},
-      { slug: 'cucumbers-squash', image: 'img/cucumbers-squash.jpg', icon: '🥒', hue: 110, name: N('Cucumbers, Squash & Pods', 'الخيار والكوسا والقرنيات', '黄瓜、瓜类与豆荚'), items: [
+      { slug: 'cucumbers-squash', image: 'img/cucumbers-squash.webp', icon: '🥒', hue: 110, name: N('Cucumbers, Squash & Pods', 'الخيار والكوسا والقرنيات', '黄瓜、瓜类与豆荚'), items: [
         L('Cucumber', 'خيار', '黄瓜'),
         L('Marrow', 'كوسا', '西葫芦'),
         L('Marrow, small', 'كوسا صغيرة', '小西葫芦'),
@@ -95,7 +95,7 @@
         L('Drumstick (moringa)', 'مورينجا (درمستيك)', '辣木荚'),
         L('Green beans', 'فاصوليا خضراء', '四季豆')
       ]},
-      { slug: 'potatoes-roots', image: 'img/potatoes-roots.jpg', icon: '🥔', hue: 35, name: N('Potatoes & Roots', 'البطاطس والجذور', '土豆与根茎类'), items: [
+      { slug: 'potatoes-roots', image: 'img/potatoes-roots.webp', icon: '🥔', hue: 35, name: N('Potatoes & Roots', 'البطاطس والجذور', '土豆与根茎类'), items: [
         L('Potato, big', 'بطاطس كبيرة', '大土豆'),
         L('Sweet potato', 'بطاطا حلوة', '红薯'),
         L('Yam', 'يام', '山药'),
@@ -106,7 +106,7 @@
         L('Radish, white', 'فجل أبيض', '白萝卜'),
         L('Turnip', 'لفت', '芜菁')
       ]},
-      { slug: 'onions-garlic', image: 'img/onions-garlic.jpg', icon: '🧅', hue: 28, name: N('Onions, Garlic & Ginger', 'البصل والثوم والزنجبيل', '洋葱、大蒜与生姜'), items: [
+      { slug: 'onions-garlic', image: 'img/onions-garlic.webp', icon: '🧅', hue: 28, name: N('Onions, Garlic & Ginger', 'البصل والثوم والزنجبيل', '洋葱、大蒜与生姜'), items: [
         L('Onion', 'بصل', '洋葱'),
         L('Onion, white', 'بصل أبيض', '白洋葱'),
         L('Spring onion', 'بصل أخضر', '小葱'),
@@ -114,7 +114,7 @@
         L('Garlic (China)', 'ثوم صيني', '中国大蒜'),
         L('Ginger (China)', 'زنجبيل صيني', '中国生姜')
       ]},
-      { slug: 'peppers-eggplant', image: 'img/peppers-eggplant.jpg', icon: '🫑', hue: 130, name: N('Peppers & Eggplant', 'الفلفل والباذنجان', '辣椒与茄子'), items: [
+      { slug: 'peppers-eggplant', image: 'img/peppers-eggplant.webp', icon: '🫑', hue: 130, name: N('Peppers & Eggplant', 'الفلفل والباذنجان', '辣椒与茄子'), items: [
         L('Capsicum, green', 'فلفل أخضر', '青椒'),
         L('Capsicum, red', 'فلفل أحمر', '红椒'),
         L('Capsicum, yellow', 'فلفل أصفر', '黄椒'),
@@ -124,7 +124,7 @@
         L('Eggplant, white small', 'باذنجان أبيض صغير', '小白茄'),
         L('Baby eggplant', 'باذنجان صغير', '小茄子')
       ]},
-      { slug: 'leafy-herbs', image: 'img/leafy-herbs.jpg', icon: '🥬', hue: 95, name: N('Leafy Greens & Herbs', 'الورقيات والأعشاب', '叶菜与香草'), items: [
+      { slug: 'leafy-herbs', image: 'img/leafy-herbs.webp', icon: '🥬', hue: 95, name: N('Leafy Greens & Herbs', 'الورقيات والأعشاب', '叶菜与香草'), items: [
         L('Lettuce, iceberg', 'خس آيسبرغ', '冰山生菜'),
         L('Lettuce, local', 'خس محلي', '本地生菜'),
         L('Lettuce, Lollo Biondo', 'خس لولو بيوندو', '绿叶生菜（Lollo Biondo）'),
@@ -149,26 +149,26 @@
         L('Methi leaves (fenugreek)', 'حلبة خضراء', '葫芦巴叶'),
         L('Korat leaves', 'ورق كورات', 'Korat叶')
       ]},
-      { slug: 'cabbage-broccoli', image: 'img/cabbage-broccoli.jpg', icon: '🥦', hue: 120, name: N('Cabbage, Broccoli & Mushrooms', 'الملفوف والبروكلي والفطر', '甘蓝、西兰花与蘑菇'), items: [
+      { slug: 'cabbage-broccoli', image: 'img/cabbage-broccoli.webp', icon: '🥦', hue: 120, name: N('Cabbage, Broccoli & Mushrooms', 'الملفوف والبروكلي والفطر', '甘蓝、西兰花与蘑菇'), items: [
         L('Cabbage, white', 'ملفوف أبيض', '圆白菜'),
         L('Cabbage, red', 'ملفوف أحمر', '紫甘蓝'),
         L('Cauliflower, local', 'قرنبيط محلي', '本地花椰菜'),
         L('Broccoli', 'بروكلي', '西兰花'),
         L('Mushroom, fresh', 'فطر طازج', '新鲜蘑菇')
       ]},
-      { slug: 'citrus', image: 'img/citrus.jpg', icon: '🍊', hue: 30, name: N('Citrus', 'الحمضيات', '柑橘类'), items: [
+      { slug: 'citrus', image: 'img/citrus.webp', icon: '🍊', hue: 30, name: N('Citrus', 'الحمضيات', '柑橘类'), items: [
         L('Orange', 'برتقال', '橙子'),
         L('Mandarin', 'يوسفي', '橘子'),
         L('Lemon, local', 'ليمون محلي', '本地柠檬'),
         L('Lemon, imported', 'ليمون مستورد', '进口柠檬'),
         L('Lemon, green (lime)', 'ليمون أخضر', '青柠')
       ]},
-      { slug: 'apples-pears', image: 'img/apples-pears.jpg', icon: '🍎', hue: 0, name: N('Apples & Pears', 'التفاح والكمثرى', '苹果与梨'), items: [
+      { slug: 'apples-pears', image: 'img/apples-pears.webp', icon: '🍎', hue: 0, name: N('Apples & Pears', 'التفاح والكمثرى', '苹果与梨'), items: [
         L('Apple, red', 'تفاح أحمر', '红苹果'),
         L('Apple, green', 'تفاح أخضر', '青苹果'),
         L('Pear', 'كمثرى', '梨')
       ]},
-      { slug: 'grapes-berries', image: 'img/grapes-berries.jpg', icon: '🍇', hue: 285, name: N('Grapes & Berries', 'العنب والتوت', '葡萄与浆果'), items: [
+      { slug: 'grapes-berries', image: 'img/grapes-berries.webp', icon: '🍇', hue: 285, name: N('Grapes & Berries', 'العنب والتوت', '葡萄与浆果'), items: [
         L('Grapes, black seedless', 'عنب أسود بدون بذور', '无籽黑葡萄'),
         L('Grapes, green', 'عنب أخضر', '青葡萄'),
         L('Grapes, red', 'عنب أحمر', '红葡萄'),
@@ -179,11 +179,11 @@
         L('Raspberry', 'توت العليق', '树莓'),
         L('Red currant', 'كشمش أحمر', '红醋栗')
       ]},
-      { slug: 'melons', image: 'img/melons.jpg', icon: '🍉', hue: 350, name: N('Melons', 'البطيخ والشمام', '西瓜与甜瓜'), items: [
+      { slug: 'melons', image: 'img/melons.webp', icon: '🍉', hue: 350, name: N('Melons', 'البطيخ والشمام', '西瓜与甜瓜'), items: [
         L('Watermelon', 'بطيخ', '西瓜'),
         L('Sweet melon', 'شمام', '甜瓜')
       ]},
-      { slug: 'tropical-fruit', image: 'img/tropical-fruit.jpg', icon: '🍌', hue: 50, name: N('Tropical & Exotic Fruit', 'الفواكه الاستوائية والغريبة', '热带及特色水果'), items: [
+      { slug: 'tropical-fruit', image: 'img/tropical-fruit.webp', icon: '🍌', hue: 50, name: N('Tropical & Exotic Fruit', 'الفواكه الاستوائية والغريبة', '热带及特色水果'), items: [
         L('Banana, yellow', 'موز أصفر', '黄香蕉'),
         L('Banana, green', 'موز أخضر', '青香蕉'),
         L('Banana, Indian', 'موز هندي', '印度香蕉'),
@@ -196,7 +196,7 @@
         L('Dragon fruit', 'فاكهة التنين', '火龙果'),
         L('Kiwi', 'كيوي', '猕猴桃')
       ]},
-      { slug: 'stone-fruit-pomegranate', image: 'img/stone-fruit-pomegranate.jpg', icon: '🍑', hue: 18, name: N('Stone Fruit & Pomegranate', 'فواكه النواة والرمان', '核果与石榴'), items: [
+      { slug: 'stone-fruit-pomegranate', image: 'img/stone-fruit-pomegranate.webp', icon: '🍑', hue: 18, name: N('Stone Fruit & Pomegranate', 'فواكه النواة والرمان', '核果与石榴'), items: [
         L('Peach', 'خوخ', '桃子'),
         L('Plum', 'برقوق', '李子'),
         L('Pomegranate', 'رمان', '石榴'),

@@ -294,7 +294,7 @@
           '<span class="bn-d">' + esc(t(lang, 'supply.' + d.id + '.d')) + '</span></span></a>';
       }).join('');
       var order = '<a class="bn bn-order reveal" style="--i:4" href="tel:' + tel + '">' +
-        '<span class="bn-bg" aria-hidden="true"><img src="' + L.asset('img/order.jpg') + '" alt="" width="1600" height="893" loading="lazy" decoding="async"></span>' +
+        '<span class="bn-bg" aria-hidden="true"><img src="' + L.asset('img/order.webp') + '" alt="" width="800" height="446" loading="lazy" decoding="async"></span>' +
         '<span class="bn-top"><span class="bn-ic">' + IC.phone + '</span><span class="bn-go acc">' + UR + '</span></span>' +
         '<span class="bn-body"><span class="bn-t">' + esc(t(lang, 'supply.orderT')) + '</span>' +
         '<span class="bn-d">' + esc(t(lang, 'supply.orderD2')) + ' <b dir="ltr">' + esc(D.company.phone) + '</b></span></span></a>';

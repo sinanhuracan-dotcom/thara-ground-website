@@ -45,6 +45,31 @@ const absUrl = file => ROOT + '/' + (file === 'index.html' || file === 'ar/index
 const relBase = file => { const depth = path.posix.dirname(file).split('/').filter(x => x && x !== '.').length; return depth ? '../'.repeat(depth) : ''; };
 const relTo = (from, to) => path.posix.relative(path.posix.dirname(from), to) || path.posix.basename(to);
 
+// schema.org LocalBusiness data (JSON-LD) for the home page: helps Google show the business in maps and local results.
+function localBusinessLD(lang, file) {
+  const T = k => I[lang][k] || I.en[k];
+  const cities = D.locations.cities.map(c => ({ '@type': 'City', name: c[lang] || c.en }));
+  const social = Object.values(D.company.social || {}).filter(Boolean);
+  const obj = {
+    '@context': 'https://schema.org',
+    '@type': ['LocalBusiness', 'WholesaleStore'],
+    '@id': absUrl('index.html') + '#business',
+    name: T('brand.full'),
+    alternateName: T('brand.name'),
+    url: absUrl(file),
+    image: absUrl('assets/img/logo.png'),
+    telephone: D.company.phone.replace(/\s/g, ''),
+    email: D.company.email,
+    address: { '@type': 'PostalAddress', streetAddress: T('contact.addressVal'), addressLocality: 'Dammam', addressCountry: 'SA' },
+    openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'], opens: '04:30', closes: '20:30' }],
+    areaServed: cities,
+    hasMap: D.company.mapUrl,
+    inLanguage: lang
+  };
+  if (social.length) obj.sameAs = social;
+  return '<script type="application/ld+json">' + JSON.stringify(obj).replace(/</g, '\\u003c') + '</script>';
+}
+
 function pageHTML(ctx, file, counterpart) {
   const base = relBase(file);
   const title = R.title(ctx), desc = R.description(ctx);
@@ -73,6 +98,7 @@ function pageHTML(ctx, file, counterpart) {
 <link rel="stylesheet" href="${FONTS}">
 <link rel="stylesheet" href="${base}assets/css/styles.css">
 <script>${EARLY}</script>
+${ctx.page === 'home' ? localBusinessLD(ctx.lang, file) : ''}
 <noscript><style>.relang #app{visibility:visible}.js .reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body data-page="${ctx.page}" data-slug="${ctx.slug || ''}" data-base="${base}" data-alt="${esc(relTo(file, counterpart))}">

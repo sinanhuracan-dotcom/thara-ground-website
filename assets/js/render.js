@@ -70,11 +70,11 @@
 
     // Image for a category or industry. Uses item.image if set, else img/<folder>/<id>.<ext> (ext from data.js images.ext).
     // The .svg artwork is the fallback if a photo file is missing (main.js swaps it in).
-    function photo(folder, id, item, L, size, eager) {
+    function photo(folder, id, item, L, size, eager, alt) {
       var ext = (D.images && D.images.ext) || 'svg';
       var src = L.asset(item.image || ('img/' + folder + '/' + id + '.' + ext));
       var fb = L.asset('img/' + folder + '/' + id + '.svg');
-      return '<img src="' + src + '" data-fallback="' + fb + '" alt="" width="' + size[0] + '" height="' + size[1] + '"' + (eager ? '' : ' loading="lazy"') + ' decoding="async">';
+      return '<img src="' + src + '" data-fallback="' + fb + '" alt="' + esc(alt || '') + '" width="' + size[0] + '" height="' + size[1] + '"' + (eager ? '' : ' loading="lazy"') + ' decoding="async">';
     }
 
     function marquee(listHtml, cls, label) {
@@ -114,7 +114,7 @@
       var navBtn = orderBtn(lang, 'nav-portal', null, false);
       return '<a class="skip" href="#main">' + esc(t(lang, 'skip')) + '</a>' +
         '<header class="site-header" id="siteHeader"><div class="wrap hdr">' +
-        '<a class="logo" href="' + L.home + '"><img class="logo-mark" src="' + L.asset('img/logo.png') + '" alt="" width="66" height="40">' +
+        '<a class="logo" href="' + L.home + '"><img class="logo-mark" src="' + L.asset('img/logo.png') + '" alt="' + esc(t(lang, 'img.logo')) + '" width="66" height="40">' +
         '<span class="logo-text"><b>' + esc(t(lang, 'brand.name')) + '</b><small>' + esc(t(lang, 'brand.tagline')) + '</small></span></a>' +
         '<nav class="nav" id="nav" aria-label="' + esc(t(lang, 'nav.main')) + '">' + nav + navExtra + navBtn + '</nav>' +
         '<div class="hdr-actions"><a class="hdr-phone" href="tel:' + tel + '" dir="ltr">' + PH + esc(D.company.phone) + '</a>' + langSw +
@@ -147,7 +147,7 @@
         (hasPortal() ? '<li><a href="' + D.company.portalLoginUrl + '">' + esc(t(lang, 'footer.login')) + '</a></li>' : '') + '</ul>';
       return '<footer class="site-footer"><div class="wrap">' +
         '<div class="foot-grid">' +
-        '<div class="foot-brand"><a class="logo" href="' + L.home + '"><img class="logo-mark" src="' + L.asset('img/logo.png') + '" alt="" width="66" height="40" loading="lazy">' +
+        '<div class="foot-brand"><a class="logo" href="' + L.home + '"><img class="logo-mark" src="' + L.asset('img/logo.png') + '" alt="' + esc(t(lang, 'img.logo')) + '" width="66" height="40" loading="lazy">' +
         '<span class="logo-text"><b>' + esc(t(lang, 'brand.name')) + '</b></span></a>' +
         '<p class="foot-tag">' + esc(t(lang, 'brand.tagline')) + '</p>' +
         '<p>' + esc(t(lang, 'footer.blurb')) + '</p>' + socialLinks(lang) + '</div>' +
@@ -180,7 +180,7 @@
       var lang = ctx.lang, L = links(ctx), H = D.hero;
       var media = H.video
         ? '<video class="hero-img" autoplay muted loop playsinline poster="' + L.asset(H.image) + '"><source src="' + L.asset(H.video) + '"></video>'
-        : '<img class="hero-img" src="' + L.asset(H.image) + '" alt="" width="1600" height="900" fetchpriority="high" decoding="async">';
+        : '<img class="hero-img" src="' + L.asset(H.image) + '" alt="' + esc(t(lang, 'img.hero')) + '" width="1600" height="900" fetchpriority="high" decoding="async">';
       var tabs = '';
       for (var i = 1; i <= H.slides; i++) {
         tabs += '<button type="button" class="hero-tab' + (i === 1 ? ' active' : '') + '" role="tab" aria-selected="' + (i === 1) + '" data-slide="' + (i - 1) + '">' +
@@ -209,7 +209,7 @@
       var lang = ctx.lang, L = links(ctx);
       var cards = D.categories.map(function (c, i) {
         return '<a class="card cat-card reveal" style="--i:' + (i % 4) + '" href="' + L.cat(c.slug) + '">' +
-          '<span class="cat-img">' + photo('cat', c.slug, c, L, [800, 600]) + '</span>' +
+          '<span class="cat-img">' + photo('cat', c.slug, c, L, [800, 600], false, t(lang, 'img.cat', { name: pick(c.name, lang) })) + '</span>' +
           '<span class="cat-body"><span class="cat-name">' + esc(pick(c.name, lang)) + '</span>' +
           '<span class="cat-count">' + esc(t(lang, c.items.length === 1 ? 'cat.count1' : 'cat.count', { n: c.items.length })) + '</span></span></a>';
       }).join('');
@@ -223,7 +223,7 @@
     function industries(ctx) {
       var lang = ctx.lang, L = links(ctx);
       var cards = D.industries.map(function (x, i) {
-        return '<article class="card ind-card reveal" style="--i:' + (i % 3) + '"><div class="ind-img">' + photo('ind', x.id, x, L, [800, 600]) +
+        return '<article class="card ind-card reveal" style="--i:' + (i % 3) + '"><div class="ind-img">' + photo('ind', x.id, x, L, [800, 600], false, t(lang, 'ind.' + x.id + '.t')) +
           '<span class="ind-n">0' + (i + 1) + '</span></div><div class="ind-body"><h3>' + esc(t(lang, 'ind.' + x.id + '.t')) + '</h3><p>' + esc(t(lang, 'ind.' + x.id + '.d')) + '</p></div></article>';
       }).join('');
       return '<section class="sec alt" id="industries" aria-labelledby="indT"><div class="wrap">' +
@@ -288,13 +288,13 @@
       var cards = D.divisions.map(function (d, i) {
         var big = i === 0, c0 = catBy(d.link) || {};
         return '<a class="bn bn-' + d.id + (big ? ' bn-big' : '') + ' reveal" style="--i:' + i + '" href="' + L.div(d.id) + '">' +
-          (d.image ? '<span class="bn-bg" aria-hidden="true">' + photo('cat', d.link, d, L, [800, 600]) + '</span>' : '') +
+          (d.image ? '<span class="bn-bg" aria-hidden="true">' + photo('cat', d.link, d, L, [800, 600], false, t(lang, 'img.div.' + d.id)) + '</span>' : '') +
           '<span class="bn-top"><span class="bn-ic">' + IC[d.id] + '</span><span class="bn-go">' + UR + '</span></span>' +
           '<span class="bn-body"><span class="bn-t">' + esc(t(lang, 'supply.' + d.id + '.t')) + '</span>' +
           '<span class="bn-d">' + esc(t(lang, 'supply.' + d.id + '.d')) + '</span></span></a>';
       }).join('');
       var order = '<a class="bn bn-order reveal" style="--i:4" href="tel:' + tel + '">' +
-        '<span class="bn-bg" aria-hidden="true"><img src="' + L.asset('img/order.webp') + '" alt="" width="800" height="446" loading="lazy" decoding="async"></span>' +
+        '<span class="bn-bg" aria-hidden="true"><img src="' + L.asset('img/order.webp') + '" alt="' + esc(t(lang, 'img.order')) + '" width="800" height="446" loading="lazy" decoding="async"></span>' +
         '<span class="bn-top"><span class="bn-ic">' + IC.phone + '</span><span class="bn-go acc">' + UR + '</span></span>' +
         '<span class="bn-body"><span class="bn-t">' + esc(t(lang, 'supply.orderT')) + '</span>' +
         '<span class="bn-d">' + esc(t(lang, 'supply.orderD2')) + ' <b dir="ltr">' + esc(D.company.phone) + '</b></span></span></a>';
@@ -318,7 +318,7 @@
       var lang = ctx.lang, L = links(ctx);
       var items = [['fw', 'M3 9l1.5-5h15L21 9M4 9v11h16V9M9 20v-6h6v6'], ['fd', 'M12 21c-4.5 0-8-3.2-8-7.5C4 9 8 7 12 8c4-1 8 1 8 5.5 0 4.3-3.5 7.5-8 7.500zM12 8c0-2 1-3.500 3-4.500']];
       var cards = items.map(function (it, i) {
-        var mark = true ? '<span class="vent-logo"><img src="' + L.asset('img/freshday.png') + '" alt="" width="417" height="398" loading="lazy" decoding="async"></span>' : null;
+        var mark = true ? '<span class="vent-logo"><img src="' + L.asset('img/freshday.png') + '" alt="' + esc(t(lang, 'img.freshday')) + '" width="417" height="398" loading="lazy" decoding="async"></span>' : null;
         return '<article class="card vent-card reveal" style="--i:' + i + '">' + (mark || '<span class="vm-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="' + it[1] + '"/></svg></span>') +
           '<p class="vent-tag">' + esc(t(lang, 'grp.tag')) + '</p><h3>' + esc(t(lang, 'grp.' + it[0] + '.t')) + '</h3><p>' + esc(t(lang, 'grp.' + it[0] + '.d')) + '</p></article>';
       }).join('');
@@ -414,7 +414,7 @@
             (it.pack ? '<span class="item-pack"><small>' + esc(t(lang, 'cat.pack')) + '</small>' + esc(t(lang, 'pack.' + it.pack)) + '</span>' : '') + '</li>';
         }).join('');
         return '<section class="sec cat-sec' + (k % 2 ? ' alt' : '') + '" id="' + sl + '" aria-labelledby="h-' + sl + '"><div class="wrap">' +
-          '<div class="cat-head"><span class="cat-thumb">' + photo('cat', sl, c, L, [800, 600]) + '</span><div><h2 class="title sm" id="h-' + sl + '">' + esc(pick(c.name, lang)) + '</h2>' +
+          '<div class="cat-head"><span class="cat-thumb">' + photo('cat', sl, c, L, [800, 600], false, t(lang, 'img.cat', { name: pick(c.name, lang) })) + '</span><div><h2 class="title sm" id="h-' + sl + '">' + esc(pick(c.name, lang)) + '</h2>' +
           '<p class="muted">' + esc(t(lang, 'cat.count', { n: c.items.length })) + '</p></div></div>' +
           '<ul class="items" role="list">' + items + '</ul></div></section>';
       }).join('');
@@ -426,7 +426,7 @@
       return '<main id="main"><section class="page-hero" style="--h:' + first.hue + '"><div class="wrap">' +
         '<nav class="crumbs" aria-label="Breadcrumb"><a href="' + L.home + '">' + esc(t(lang, 'cat.home')) + '</a><span aria-hidden="true">/</span>' +
         '<a href="' + L.sect('supply') + '">' + esc(t(lang, 'supply.title')) + '</a><span aria-hidden="true">/</span><span aria-current="page">' + esc(name) + '</span></nav>' +
-        '<div class="ph"><div class="ph-img">' + photo('cat', first.slug, dv.image ? dv : first, L, [800, 600], true) + '</div><div><h1>' + esc(name) + '</h1><p class="lead">' + esc(t(lang, 'supply.' + dv.id + '.d')) + '</p>' +
+        '<div class="ph"><div class="ph-img">' + photo('cat', first.slug, dv.image ? dv : first, L, [800, 600], true, t(lang, 'img.div.' + dv.id)) + '</div><div><h1>' + esc(name) + '</h1><p class="lead">' + esc(t(lang, 'supply.' + dv.id + '.d')) + '</p>' +
         '<div class="chips jump">' + jump + '</div></div></div>' +
         '<div class="cta"><a class="btn primary lg" href="' + wa + '" target="_blank" rel="noopener">' + esc(t(lang, 'cta.order')) + ICON.arrow + '</a>' +
         '<a class="btn lg" href="tel:' + D.company.phone.replace(/\s/g, '') + '" dir="ltr">' + esc(D.company.phone) + '</a></div></div></section>' +

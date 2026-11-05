@@ -736,3 +736,27 @@ html[dir="rtl"] .bn-order .bn-bg img { left: auto; right: 0; width: 150%; }
 .logo-row { list-style: none; margin: 0; padding: 8px 0 24px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 28px 48px; }
 .logo-row li { display: flex; align-items: center; }
 .logo-row .logo-img { height: 56px; width: auto; object-fit: contain; }
+
+/* Contact section: photo banner, details card overlapping it, enquiry form beside it (matches the layout of the reference contact page) */
+.ct-sec { padding-top: 0; }
+.ct-banner { position: relative; overflow: hidden; background: var(--bg-alt); }
+.ct-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
+.ct-banner::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(var(--shade), .55) 0%, rgba(var(--shade), .88) 75%, var(--bg-alt) 100%); }
+.ct-head { position: relative; z-index: 1; padding-top: 88px; padding-bottom: 130px; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+.ct-head .title { font-size: clamp(34px, 5vw, 52px); }
+.ct-head .lead { max-width: 640px; }
+.ct-head .cta { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 12px; }
+.ct-body { position: relative; z-index: 2; margin-top: -90px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 24px; align-items: start; }
+.ct-card { padding: 12px 28px; margin: 0; display: flex; flex-direction: column; }
+.ct-card .ct-row { display: flex; gap: 16px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.ct-card .ct-row:last-child { border-bottom: 0; }
+.ct-card .ct-ic { flex: 0 0 48px; width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; background: var(--surface-2); color: var(--accent); }
+.ct-card dt { font-size: 13px; color: var(--muted); margin: 0 0 2px; }
+.ct-card dd { margin: 0; font-weight: 700; font-size: 17px; }
+.ct-card dd a { color: var(--fg); text-decoration: none; }
+.ct-card dd a:hover { text-decoration: underline; }
+@media (max-width: 900px) {
+  .ct-body { grid-template-columns: 1fr; margin-top: -70px; }
+  .ct-head { padding-top: 64px; padding-bottom: 110px; }
+}
+

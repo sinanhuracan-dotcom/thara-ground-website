@@ -392,22 +392,35 @@
     }
 
     function contact(ctx) {
-      var lang = ctx.lang;
-      var info = [['phone', '<a href="tel:' + D.company.phone.replace(/\s/g, '') + '" dir="ltr">' + esc(D.company.phone) + '</a>'],
-        ['email', '<a href="mailto:' + D.company.email + '">' + esc(D.company.email) + '</a>'],
-        ['address', '<a href="' + D.company.mapUrl + '" target="_blank" rel="noopener">' + esc(t(lang, 'contact.addressVal')) + '</a>'],
-        ['hours', esc(t(lang, 'contact.hoursVal'))]].map(function (x) {
-        return '<div><dt>' + esc(t(lang, 'contact.' + x[0])) + '</dt><dd>' + x[1] + '</dd></div>';
-      }).join('');
-      return '<section class="sec alt" id="contact" aria-labelledby="contactT"><div class="wrap">' +
-        sectionHead(lang, 'contact.eyebrow', 'contact.title', null, 'contactT') +
-        '<div class="grid-2 contact-grid"><dl class="contact-list card reveal">' + info + '</dl>' +
+      var lang = ctx.lang, L = links(ctx), tel = D.company.phone.replace(/\s/g, '');
+      var IC = {
+        phone: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>',
+        email: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/>',
+        address: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
+        hours: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>'
+      };
+      function row(key, value) {
+        return '<div class="ct-row"><span class="ct-ic"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + IC[key] + '</svg></span>' +
+          '<div><dt>' + esc(t(lang, 'contact.' + key)) + '</dt><dd>' + value + '</dd></div></div>';
+      }
+      var info = row('phone', '<a href="tel:' + tel + '" dir="ltr">' + esc(D.company.phone) + '</a>') +
+        row('email', '<a href="mailto:' + D.company.email + '">' + esc(D.company.email) + '</a>') +
+        row('address', '<a href="' + D.company.mapUrl + '" target="_blank" rel="noopener">' + esc(t(lang, 'contact.addressVal')) + '</a>') +
+        row('hours', esc(t(lang, 'contact.hoursVal')));
+      return '<section class="sec alt ct-sec" id="contact" aria-labelledby="contactT">' +
+        '<div class="ct-banner"><img class="ct-bg" src="' + L.asset(D.hero.image) + '" alt="" loading="lazy" decoding="async">' +
+        '<div class="wrap ct-head"><p class="eyebrow">' + esc(t(lang, 'contact.eyebrow')) + '</p>' +
+        '<h2 class="title" id="contactT">' + esc(t(lang, 'contact.page')) + '</h2>' +
+        '<p class="lead">' + esc(t(lang, 'contact.lead')) + '</p>' +
+        '<div class="cta"><a class="btn primary lg" href="' + waUrl(t(lang, 'wa.text')) + '" target="_blank" rel="noopener">' + esc(t(lang, 'cta.order')) + ICON.arrow + '</a>' +
+        '<a class="btn lg" href="tel:' + tel + '" dir="ltr">' + esc(D.company.phone) + '</a></div></div></div>' +
+        '<div class="wrap ct-body"><dl class="contact-list card ct-card">' + info + '</dl>' +
         '<form class="card contact-form reveal" id="contactForm" name="contact" method="POST" data-netlify="true" style="--i:1"><input type="hidden" name="form-name" value="contact"><h3>' + esc(t(lang, 'form.title')) + '</h3>' +
         '<label>' + esc(t(lang, 'form.name')) + '<input name="name" autocomplete="name" required></label>' +
         '<label>' + esc(t(lang, 'form.phone')) + '<input name="phone" type="tel" autocomplete="tel" dir="ltr"></label>' +
         '<label>' + esc(t(lang, 'form.msg')) + '<textarea name="msg" rows="4" required></textarea></label>' +
         '<button class="btn primary" type="submit">' + esc(t(lang, 'form.send')) + ICON.arrow + '</button>' +
-        '<p class="muted">' + esc(t(lang, 'min.form')) + '</p><p class="muted">' + esc(t(lang, 'form.note')) + '</p><p class="form-status" id="formStatus" role="status" aria-live="polite"></p></form></div></div></section>';
+        '<p class="muted">' + esc(t(lang, 'min.form')) + '</p><p class="muted">' + esc(t(lang, 'form.note')) + '</p><p class="form-status" id="formStatus" role="status" aria-live="polite"></p></form></div></section>';
     }
 
     /* ---------- category page ---------- */

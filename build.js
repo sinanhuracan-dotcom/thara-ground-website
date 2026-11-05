@@ -36,6 +36,7 @@ function write(file, html) {
 const PAGES = [
   { page: 'home', slug: '', en: 'index.html', ar: 'ar/index.html' },
   ...D.divisions.map(d => ({ page: 'division', slug: d.id, en: 'products/' + d.id + '.html', ar: 'ar/products/' + d.id + '.html' })),
+  { page: 'contact', slug: 'contact', en: 'contact.html', ar: 'ar/contact.html' },
   { page: 'legal', slug: 'privacy', en: 'privacy.html', ar: 'ar/privacy.html' },
   { page: 'legal', slug: 'terms', en: 'terms.html', ar: 'ar/terms.html' }
 ];

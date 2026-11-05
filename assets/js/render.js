@@ -56,7 +56,7 @@
         home: base + P + 'index.html',
         div: function (id) { return base + P + 'products/' + id + '.html'; },
         cat: function (slug) { var d = divOfCat(slug); return base + P + 'products/' + (d ? d.id : 'veg') + '.html#' + slug; },
-        sect: function (id) { return (ctx.page === 'home' ? '' : base + P + 'index.html') + '#' + id; },
+        sect: function (id) { if (id === 'contact') return base + P + 'contact.html'; return (ctx.page === 'home' ? '' : base + P + 'index.html') + '#' + id; },
         asset: function (p) { return base + 'assets/' + p; },
         page: function (p) { return base + P + p; }
       };
@@ -394,7 +394,9 @@
     function contact(ctx) {
       var lang = ctx.lang;
       var info = [['phone', '<a href="tel:' + D.company.phone.replace(/\s/g, '') + '" dir="ltr">' + esc(D.company.phone) + '</a>'],
-        ['email', '<a href="mailto:' + D.company.email + '">' + esc(D.company.email) + '</a>']].map(function (x) {
+        ['email', '<a href="mailto:' + D.company.email + '">' + esc(D.company.email) + '</a>'],
+        ['address', '<a href="' + D.company.mapUrl + '" target="_blank" rel="noopener">' + esc(t(lang, 'contact.addressVal')) + '</a>'],
+        ['hours', esc(t(lang, 'contact.hoursVal'))]].map(function (x) {
         return '<div><dt>' + esc(t(lang, 'contact.' + x[0])) + '</dt><dd>' + x[1] + '</dd></div>';
       }).join('');
       return '<section class="sec alt" id="contact" aria-labelledby="contactT"><div class="wrap">' +
@@ -448,12 +450,25 @@
         '<p>' + esc(t(lang, k + '.p1')) + '</p><p>' + esc(t(lang, k + '.p2')) + '</p></div></section></main>';
     }
 
+    /* Dedicated contact page: intro with WhatsApp and phone buttons, then details and the enquiry form. */
+    function contactMain(ctx) {
+      var lang = ctx.lang, L = links(ctx), tel = D.company.phone.replace(/\s/g, '');
+      return '<main id="main"><section class="page-hero" style="--h:150"><div class="wrap">' +
+        '<nav class="crumbs" aria-label="Breadcrumb"><a href="' + L.home + '">' + esc(t(lang, 'cat.home')) + '</a><span aria-hidden="true">/</span><span aria-current="page">' + esc(t(lang, 'contact.page')) + '</span></nav>' +
+        '<div class="ph-text"><p class="eyebrow">' + esc(t(lang, 'contact.eyebrow')) + '</p><h1>' + esc(t(lang, 'contact.page')) + '</h1><p class="lead">' + esc(t(lang, 'contact.lead')) + '</p></div>' +
+        '<div class="cta"><a class="btn primary lg" href="' + waUrl(t(lang, 'wa.text')) + '" target="_blank" rel="noopener">' + esc(t(lang, 'cta.order')) + ICON.arrow + '</a>' +
+        '<a class="btn lg" href="tel:' + tel + '" dir="ltr">' + esc(D.company.phone) + '</a></div></div></section>' +
+        contact(ctx) + '</main>';
+    }
+
     function render(ctx) {
       var out = header(ctx);
       if (ctx.page === 'home') {
         out += '<main id="main">' + hero(ctx) + supply(ctx) + about(ctx) + brands(ctx) + why(ctx) + how(ctx) + ventures(ctx) + locations(ctx) + testimonials(ctx) + gallery(ctx) + cta(ctx) + contact(ctx) + '</main>';
       } else if (ctx.page === 'division') {
         out += divisionMain(ctx);
+      } else if (ctx.page === 'contact') {
+        out += contactMain(ctx);
       } else {
         out += legalMain(ctx);
       }
@@ -463,6 +478,7 @@
     function title(ctx) {
       var lang = ctx.lang;
       if (ctx.page === 'home') return t(lang, 'site.title');
+      if (ctx.page === 'contact') return t(lang, 'contact.page') + ' | ' + t(lang, 'brand.full');
       if (ctx.page === 'division') return t(lang, 'supply.' + ctx.slug + '.t') + ' | ' + t(lang, 'brand.full');
       return t(lang, ctx.slug + '.title') + ' | ' + t(lang, 'brand.full');
     }

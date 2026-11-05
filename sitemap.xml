@@ -41,6 +41,16 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://tharaground.netlify.app/ar/products/leafy.html"/>
   </url>
   <url>
+    <loc>https://tharaground.netlify.app/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tharaground.netlify.app/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tharaground.netlify.app/ar/contact.html"/>
+  </url>
+  <url>
+    <loc>https://tharaground.netlify.app/ar/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tharaground.netlify.app/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tharaground.netlify.app/ar/contact.html"/>
+  </url>
+  <url>
     <loc>https://tharaground.netlify.app/privacy.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tharaground.netlify.app/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tharaground.netlify.app/ar/privacy.html"/>

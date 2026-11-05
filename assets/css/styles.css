@@ -731,3 +731,8 @@ html[dir="rtl"] .bn-order .bn-bg img { left: auto; right: 0; width: 150%; }
 /* Minimum order note on the Locations card */
 .order-min { margin-top: 6px; padding-top: 12px; border-top: 1px solid var(--line, rgba(70,201,121,.2)); color: var(--muted, inherit); font-size: 15px; line-height: 1.6; }
 .order-min strong { color: var(--accent, #2fbf71); }
+
+/* Short logo rows (used when a strip has fewer than four logos, so nothing repeats) */
+.logo-row { list-style: none; margin: 0; padding: 8px 0 24px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 28px 48px; }
+.logo-row li { display: flex; align-items: center; }
+.logo-row .logo-img { height: 56px; width: auto; object-fit: contain; }

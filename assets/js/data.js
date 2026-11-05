@@ -234,9 +234,7 @@
       ]
     },
 
-    // Clients you are allowed to list. The strip repeats these names continuously.
-    clients: [
-      { name: 'FRESH DAY SUPERMARKETS' }, { name: 'Fresh Day Fruits and Vegetables', logo: 'img/freshday.png', tile: true }, { name: 'SUAIDI COMPANY' }
-    ]
+    // Client logos: add { name, logo } entries here only when you have permission to show a client's logo. Leave empty to hide the strip.
+    clients: []
   };
 });

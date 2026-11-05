@@ -246,14 +246,20 @@
 
     function brands(ctx) {
       var lang = ctx.lang, L = links(ctx), B = D.brands;
-      function fill(list, min) { var out = list.slice(); while (out.length < min) out = out.concat(list); return out; }
-      var wall = marquee(fill(B.list, 8).map(function (b) { return logoChip(b, L); }).join(''), '', t(lang, 'brands.title'));
-      var clients = marquee(fill(D.clients, 6).map(function (b) { return logoChip(b, L); }).join(''), 'rev', t(lang, 'clients.title'));
+      /* Each name appears once: a scrolling strip only when there are enough logos, otherwise a plain row. */
+      var wallItems = B.list.map(function (b) { return logoChip(b, L); }).join('');
+      var wall = B.list.length >= 4
+        ? '<div class="mq-wrap">' + marquee(wallItems, '', t(lang, 'brands.title')) + '</div>'
+        : '<ul class="logo-row" role="list" aria-label="' + esc(t(lang, 'brands.title')) + '">' + wallItems + '</ul>';
+      var clientsBlock = (D.clients && D.clients.length)
+        ? '<div class="wrap"><h3 class="clients-h reveal">' + esc(t(lang, 'clients.title')) + '</h3></div>' +
+          (D.clients.length >= 4
+            ? '<div class="mq-wrap">' + marquee(D.clients.map(function (b) { return logoChip(b, L); }).join(''), 'rev', t(lang, 'clients.title')) + '</div>'
+            : '<ul class="logo-row" role="list" aria-label="' + esc(t(lang, 'clients.title')) + '">' + D.clients.map(function (b) { return logoChip(b, L); }).join('') + '</ul>')
+        : '';
       return '<section class="sec alt" id="brands" aria-labelledby="brandsT"><div class="wrap">' +
         '<div class="sec-head row reveal"><div><p class="eyebrow">' + esc(t(lang, 'brands.eyebrow')) + '</p><h2 class="title" id="brandsT">' + esc(t(lang, 'brands.title')) + '</h2></div></div></div>' +
-        '<div class="mq-wrap">' + wall + '</div>' +
-        '<div class="wrap"><h3 class="clients-h reveal">' + esc(t(lang, 'clients.title')) + '</h3></div>' +
-        '<div class="mq-wrap">' + clients + '</div></section>';
+        wall + clientsBlock + '</section>';
     }
 
     function tickList(lang, prefix, n) {

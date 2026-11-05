@@ -16,7 +16,7 @@
 
   return {
     site: {
-      url: 'https://www.example.com' // used in sitemap.xml; replace with your real domain
+      url: 'https://tharaground.netlify.app' // used in sitemap.xml and canonical links; change to your custom domain once you have one
     },
 
     company: {

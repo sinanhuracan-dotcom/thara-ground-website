@@ -1,9 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.example.com/</loc></url>
-  <url><loc>https://www.example.com/products/veg.html</loc></url>
-  <url><loc>https://www.example.com/products/fruit.html</loc></url>
-  <url><loc>https://www.example.com/products/leafy.html</loc></url>
-  <url><loc>https://www.example.com/privacy.html</loc></url>
-  <url><loc>https://www.example.com/terms.html</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://tharaground.netlify.app/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tharaground.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tharaground.netlify.app/ar/"/>
+  </url>
+  <url>
+    <loc>https://tharaground.netlify.app/ar/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tharaground.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tharaground.netlify.app/ar/"/>
+  </url>
+  <url>
+    <loc>https://tharaground.netlify.app/products/veg.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tharaground.netlify.app/products/veg.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tharaground.netlify.app/ar/products/veg.html"/>
+  </url>
+  <url>
+    <loc>https://tharaground.netlify.app/ar/products/veg.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tharaground.netlify.app/products/veg.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tharaground.netlify.app/ar/products/veg.html"/>
+  </url>
+  <url>
+    <loc>https://tharaground.netlify.app/products/fruit.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tharaground.netlify.app/products/fruit.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tharaground.netlify.app/ar/products/fruit.html"/>
+  </url>
+  <url>
+    <loc>https://tharaground.netlify.app/ar/products/fruit.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tharaground.netlify.app/products/fruit.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tharaground.netlify.app/ar/products/fruit.html"/>
+  </url>
+  <url>
+    <loc>https://tharaground.netlify.app/products/leafy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tharaground.netlify.app/products/leafy.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tharaground.netlify.app/ar/products/leafy.html"/>
+  </url>
+  <url>
+    <loc>https://tharaground.netlify.app/ar/products/leafy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tharaground.netlify.app/products/leafy.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tharaground.netlify.app/ar/products/leafy.html"/>
+  </url>
+  <url>
+    <loc>https://tharaground.netlify.app/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tharaground.netlify.app/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tharaground.netlify.app/ar/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://tharaground.netlify.app/ar/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tharaground.netlify.app/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tharaground.netlify.app/ar/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://tharaground.netlify.app/terms.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tharaground.netlify.app/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tharaground.netlify.app/ar/terms.html"/>
+  </url>
+  <url>
+    <loc>https://tharaground.netlify.app/ar/terms.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tharaground.netlify.app/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tharaground.netlify.app/ar/terms.html"/>
+  </url>
 </urlset>

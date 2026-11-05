@@ -150,7 +150,10 @@
     if (lb) {
       var next = lb.getAttribute('data-lang');
       if (next !== lang && I[next]) {
-        lang = next; store('lang', lang);
+        store('lang', next);
+        var altUrl = body.getAttribute('data-alt');
+        if (altUrl) { location.href = altUrl; return; } /* each language has its own real URL */
+        lang = next;
         var y = window.scrollY; mount(true); window.scrollTo(0, y);
       }
       return;
@@ -197,5 +200,8 @@
     });
   }, { passive: true });
 
-  mount(lang !== 'en');
+  /* A visitor whose saved or browser language is Arabic lands on the Arabic URL of this page. */
+  var altPage = body.getAttribute('data-alt');
+  if (lang === 'ar' && !root.hasAttribute('data-page-lang') && altPage) { location.replace(altPage); }
+  else mount(lang !== 'en');
 })();

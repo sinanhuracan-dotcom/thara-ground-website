@@ -1,5 +1,6 @@
 /*
- * BUILD SCRIPT: writes every HTML page from data.js and i18n.js.
+ * BUILD SCRIPT: writes every HTML page from data.js and i18n.js, in English (root)
+ * and Arabic (ar/ folder, right-to-left), plus sitemap.xml and robots.txt.
  * Run after editing the data or translation files:   node build.js
  * Needs Node.js 16 or newer. No packages to install.
  */
@@ -14,10 +15,11 @@ const esc = R.esc;
 const FONTS = 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap';
 
 // Runs before first paint: sets theme (light by default), language and direction, so the page does not flash.
+// Arabic pages carry data-page-lang="ar" and always use Arabic; English pages follow the saved choice or the browser language.
 const EARLY = "(function(){var d=document.documentElement;d.classList.add('js');" +
   "var s=function(k){try{return localStorage.getItem(k)}catch(e){return null}};" +
   "d.setAttribute('data-theme',s('theme')==='light'?'light':'dark');" +
-  "var l=s('lang');if(l!=='ar'&&l!=='en'){var n=(navigator.language||'en').toLowerCase();l=n.indexOf('ar')===0?'ar':'en'}" +
+  "var l=d.getAttribute('data-page-lang');if(!l){l=s('lang');if(l!=='ar'&&l!=='en'){var n=(navigator.language||'en').toLowerCase();l=n.indexOf('ar')===0?'ar':'en'}}" +
   "d.lang=l;d.dir=l==='ar'?'rtl':'ltr';if(l!=='en')d.classList.add('relang');" +
   "setTimeout(function(){d.classList.add('reveal-all')},4000)})();";
 
@@ -30,21 +32,39 @@ function write(file, html) {
   fs.writeFileSync(full, html);
 }
 
-function pageHTML(ctx, file) {
-  const base = ctx.base;
+// Each logical page exists once per language. `en` and `ar` are the file paths.
+const PAGES = [
+  { page: 'home', slug: '', en: 'index.html', ar: 'ar/index.html' },
+  ...D.divisions.map(d => ({ page: 'division', slug: d.id, en: 'products/' + d.id + '.html', ar: 'ar/products/' + d.id + '.html' })),
+  { page: 'legal', slug: 'privacy', en: 'privacy.html', ar: 'ar/privacy.html' },
+  { page: 'legal', slug: 'terms', en: 'terms.html', ar: 'ar/terms.html' }
+];
+
+const ROOT = D.site.url.replace(/\/$/, '');
+const absUrl = file => ROOT + '/' + (file === 'index.html' || file === 'ar/index.html' ? file.replace(/index\.html$/, '') : file);
+const relBase = file => { const depth = path.posix.dirname(file).split('/').filter(x => x && x !== '.').length; return depth ? '../'.repeat(depth) : ''; };
+const relTo = (from, to) => path.posix.relative(path.posix.dirname(from), to) || path.posix.basename(to);
+
+function pageHTML(ctx, file, counterpart) {
+  const base = relBase(file);
   const title = R.title(ctx), desc = R.description(ctx);
   const body = R.render(ctx);
-  const canonical = D.site.url.replace(/\/$/, '') + '/' + file;
+  const isAr = ctx.lang === 'ar';
+  const enFile = isAr ? counterpart : file, arFile = isAr ? file : counterpart;
   return `<!doctype html>
-<html lang="en" dir="ltr" data-theme="dark">
+<html lang="${ctx.lang}" dir="${isAr ? 'rtl' : 'ltr'}" data-theme="dark"${isAr ? ' data-page-lang="ar"' : ''}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
 <meta name="theme-color" content="#06170D">
-<link rel="canonical" href="${esc(canonical)}">
+<link rel="canonical" href="${esc(absUrl(file))}">
+<link rel="alternate" hreflang="en" href="${esc(absUrl(enFile))}">
+<link rel="alternate" hreflang="ar" href="${esc(absUrl(arFile))}">
+<link rel="alternate" hreflang="x-default" href="${esc(absUrl(enFile))}">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="${isAr ? 'ar_SA' : 'en_US'}">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc)}">
 <link rel="icon" href="${base}assets/img/favicon.png" type="image/png">
@@ -55,7 +75,7 @@ function pageHTML(ctx, file) {
 <script>${EARLY}</script>
 <noscript><style>.relang #app{visibility:visible}.js .reveal{opacity:1;transform:none}</style></noscript>
 </head>
-<body data-page="${ctx.page}" data-slug="${ctx.slug || ''}" data-base="${base}">
+<body data-page="${ctx.page}" data-slug="${ctx.slug || ''}" data-base="${base}" data-alt="${esc(relTo(file, counterpart))}">
 <div id="app">${body}</div>
 <script src="${base}assets/js/data.js" defer></script>
 <script src="${base}assets/js/i18n.js" defer></script>
@@ -67,16 +87,22 @@ function pageHTML(ctx, file) {
 }
 
 const urls = [];
-function add(file, ctx) { write(file, pageHTML(ctx, file)); urls.push(file); }
+PAGES.forEach(p => {
+  const enCtx = { lang: 'en', page: p.page, slug: p.slug, base: relBase(p.en) };
+  const arCtx = { lang: 'ar', page: p.page, slug: p.slug, base: relBase(p.ar) };
+  write(p.en, pageHTML(enCtx, p.en, p.ar));
+  write(p.ar, pageHTML(arCtx, p.ar, p.en));
+  urls.push(p.en, p.ar);
+});
 
-add('index.html', { lang: 'en', page: 'home', slug: '', base: '' });
-D.divisions.forEach(d => add('products/' + d.id + '.html', { lang: 'en', page: 'division', slug: d.id, base: '../' }));
-add('privacy.html', { lang: 'en', page: 'legal', slug: 'privacy', base: '' });
-add('terms.html', { lang: 'en', page: 'legal', slug: 'terms', base: '' });
-
-const root = D.site.url.replace(/\/$/, '');
-write('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-  urls.map(u => '  <url><loc>' + root + '/' + (u === 'index.html' ? '' : u) + '</loc></url>').join('\n') + '\n</urlset>\n');
-write('robots.txt', 'User-agent: *\nAllow: /\nSitemap: ' + root + '/sitemap.xml\n');
+const alt = u => '    <xhtml:link rel="alternate" hreflang="%L" href="' + absUrl(u) + '"/>';
+write('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
+  PAGES.map(p => ['en', 'ar'].map(l => {
+    const f = p[l];
+    return '  <url>\n    <loc>' + absUrl(f) + '</loc>\n' +
+      alt(p.en).replace('%L', 'en') + '\n' + alt(p.ar).replace('%L', 'ar') + '\n' +
+      '  </url>';
+  }).join('\n')).join('\n') + '\n</urlset>\n');
+write('robots.txt', 'User-agent: *\nAllow: /\nSitemap: ' + ROOT + '/sitemap.xml\n');
 
 console.log('Built ' + urls.length + ' pages, sitemap.xml and robots.txt');

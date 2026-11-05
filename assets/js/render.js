@@ -51,13 +51,14 @@
 
     function links(ctx) {
       var base = ctx.base || '';
+      var P = ctx.lang === 'ar' ? 'ar/' : '';
       return {
-        home: base + 'index.html',
-        div: function (id) { return base + 'products/' + id + '.html'; },
-        cat: function (slug) { var d = divOfCat(slug); return base + 'products/' + (d ? d.id : 'veg') + '.html#' + slug; },
-        sect: function (id) { return (ctx.page === 'home' ? '' : base + 'index.html') + '#' + id; },
+        home: base + P + 'index.html',
+        div: function (id) { return base + P + 'products/' + id + '.html'; },
+        cat: function (slug) { var d = divOfCat(slug); return base + P + 'products/' + (d ? d.id : 'veg') + '.html#' + slug; },
+        sect: function (id) { return (ctx.page === 'home' ? '' : base + P + 'index.html') + '#' + id; },
         asset: function (p) { return base + 'assets/' + p; },
-        page: function (p) { return base + p; }
+        page: function (p) { return base + P + p; }
       };
     }
 

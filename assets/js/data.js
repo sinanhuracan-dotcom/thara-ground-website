@@ -196,7 +196,7 @@
         L('Dragon fruit', 'فاكهة التنين', '火龙果'),
         L('Kiwi', 'كيوي', '猕猴桃')
       ]},
-      { slug: 'stone-fruit-pomegranate', icon: '🍑', hue: 18, name: N('Stone Fruit & Pomegranate', 'فواكه النواة والرمان', '核果与石榴'), items: [
+      { slug: 'stone-fruit-pomegranate', image: 'img/stone-fruit-pomegranate.jpg', icon: '🍑', hue: 18, name: N('Stone Fruit & Pomegranate', 'فواكه النواة والرمان', '核果与石榴'), items: [
         L('Peach', 'خوخ', '桃子'),
         L('Plum', 'برقوق', '李子'),
         L('Pomegranate', 'رمان', '石榴'),

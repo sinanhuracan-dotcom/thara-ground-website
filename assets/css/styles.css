@@ -731,14 +731,3 @@ html[dir="rtl"] .bn-order .bn-bg img { left: auto; right: 0; width: 150%; }
 /* Minimum order note on the Locations card */
 .order-min { margin-top: 6px; padding-top: 12px; border-top: 1px solid var(--line, rgba(70,201,121,.2)); color: var(--muted, inherit); font-size: 15px; line-height: 1.6; }
 .order-min strong { color: var(--accent, #2fbf71); }
-
-/* Mobile action bar: WhatsApp for messages, phone for calls */
-.mob-bar { display: none; }
-@media (max-width: 760px) {
-  .mob-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)); background: rgba(6, 23, 13, .95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 1px solid rgba(70, 201, 121, .25); }
-  .mob-bar a { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 50px; border-radius: 999px; font-weight: 700; font-size: 16px; text-decoration: none; }
-  .mob-bar .mb-wa { background: #1FA855; color: #fff; }
-  .mob-bar .mb-call { background: transparent; color: #fff; border: 1.5px solid #46C979; }
-  .mob-bar a:focus-visible { outline: 3px solid #46C979; outline-offset: 2px; }
-  body { padding-bottom: 84px; }
-}

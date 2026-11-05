@@ -163,14 +163,6 @@
         '</div></footer>';
     }
 
-    /* Mobile action bar: WhatsApp for messages, phone for calls. Hidden on larger screens by CSS. */
-    function mobBar(ctx) {
-      var lang = ctx.lang, tel = D.company.phone.replace(/\s/g, '');
-      return '<nav class="mob-bar" aria-label="' + esc(t(lang, 'bar.label')) + '">' +
-        '<a class="mb-wa" href="' + waUrl(t(lang, 'wa.text')) + '" target="_blank" rel="noopener">' + ICON.chat + '<span>' + esc(t(lang, 'bar.wa')) + '</span></a>' +
-        '<a class="mb-call" href="tel:' + esc(tel) + '">' + '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>' + '<span>' + esc(t(lang, 'bar.call')) + '</span></a></nav>';
-    }
-
     function waFloat(ctx) {
       var lang = ctx.lang;
       return '<a class="wa-float" href="' + waUrl(t(lang, 'wa.text')) + '" target="_blank" rel="noopener" aria-label="' + esc(t(lang, 'wa.label')) + '">' + ICON.chat + '</a>';
@@ -461,7 +453,7 @@
       } else {
         out += legalMain(ctx);
       }
-      return out + footer(ctx) + mobBar(ctx);
+      return out + footer(ctx);
     }
 
     function title(ctx) {

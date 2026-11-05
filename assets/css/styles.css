@@ -727,3 +727,7 @@ html[dir="rtl"] .bn-order .bn-bg img { left: auto; right: 0; width: 150%; }
 /* Contact form confirmation (Netlify Forms + WhatsApp) */
 .form-status { min-height: 1.4em; margin: 0; font-weight: 700; color: var(--accent, #2fbf71); }
 .form-status:empty { display: none; }
+
+/* Minimum order note on the Locations card */
+.order-min { margin-top: 6px; padding-top: 12px; border-top: 1px solid var(--line, rgba(70,201,121,.2)); color: var(--muted, inherit); font-size: 15px; line-height: 1.6; }
+.order-min strong { color: var(--accent, #2fbf71); }

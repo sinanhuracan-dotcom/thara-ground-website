@@ -335,7 +335,8 @@
         '<div class="grid-2"><article class="card loc-card reveal"><h3>' + esc(t(lang, 'loc.shop')) + '</h3>' +
         '<p>' + esc(t(lang, 'contact.addressVal')) + '</p><p class="muted">' + esc(t(lang, 'contact.hoursVal')) + '</p>' +
         '<a class="btn" href="' + D.company.mapUrl + '" target="_blank" rel="noopener">' + esc(t(lang, 'loc.map')) + ICON.arrow + '</a></article>' +
-        '<article class="card loc-card reveal" style="--i:1"><h3>' + esc(t(lang, 'loc.deliver')) + '</h3><ul class="chips" role="list">' + chips + '</ul></article></div></div></section>';
+        '<article class="card loc-card reveal" style="--i:1"><h3>' + esc(t(lang, 'loc.deliver')) + '</h3><ul class="chips" role="list">' + chips + '</ul>' +
+        '<p class="order-min"><strong>' + esc(t(lang, 'min.delivery')) + '</strong><br>' + esc(t(lang, 'min.pickup')) + '</p></article></div></div></section>';
     }
 
     function testimonials(ctx) {
@@ -400,7 +401,7 @@
         '<label>' + esc(t(lang, 'form.phone')) + '<input name="phone" type="tel" autocomplete="tel" dir="ltr"></label>' +
         '<label>' + esc(t(lang, 'form.msg')) + '<textarea name="msg" rows="4" required></textarea></label>' +
         '<button class="btn primary" type="submit">' + esc(t(lang, 'form.send')) + ICON.arrow + '</button>' +
-        '<p class="muted">' + esc(t(lang, 'form.note')) + '</p><p class="form-status" id="formStatus" role="status" aria-live="polite"></p></form></div></div></section>';
+        '<p class="muted">' + esc(t(lang, 'min.form')) + '</p><p class="muted">' + esc(t(lang, 'form.note')) + '</p><p class="form-status" id="formStatus" role="status" aria-live="polite"></p></form></div></div></section>';
     }
 
     /* ---------- category page ---------- */

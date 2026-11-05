@@ -194,7 +194,7 @@
         '<h1 id="heroTitle">' + rich(t(lang, 'hero.1.title')) + '</h1>' +
         '<p class="lead" id="heroSub">' + esc(t(lang, 'hero.1.sub')) + '</p>' +
         '<div class="cta"><a class="btn primary lg" href="' + L.sect('supply') + '">' + esc(t(lang, 'cta.explore')) + ICON.arrow + '</a>' +
-        '<a class="btn outline lg" href="' + waUrl(t(lang, 'wa.text')) + '" target="_blank" rel="noopener">' + esc(t(lang, 'cta.salesTeam')) + '</a></div></div>' +
+        '<a class="btn outline lg" href="' + L.sect('contact') + '">' + esc(t(lang, 'cta.salesTeam')) + '</a></div></div>' +
         stats(ctx) + '</div>' +
         (H.slides > 1 ? '<div class="wrap"><div class="hero-bar"><div class="hero-tabs" role="tablist" aria-label="' + esc(t(lang, 'hero.tabs')) + '">' + tabs + '</div>' +
         '<button type="button" class="icon-btn hero-pause" id="heroPause" aria-pressed="false" aria-label="' + esc(t(lang, 'hero.pause')) + '">' + ICON.pause + ICON.play + '</button></div></div>' : '') +

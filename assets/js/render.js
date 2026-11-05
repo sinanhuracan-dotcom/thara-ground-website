@@ -391,7 +391,7 @@
         '<div class="cta">' + btns + '</div></div></div></section>';
     }
 
-    function contact(ctx) {
+    function contact(ctx, crumbs) {
       var lang = ctx.lang, L = links(ctx), tel = D.company.phone.replace(/\s/g, '');
       var IC = {
         phone: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>',
@@ -409,8 +409,8 @@
         row('hours', esc(t(lang, 'contact.hoursVal')));
       return '<section class="sec alt ct-sec" id="contact" aria-labelledby="contactT">' +
         '<div class="ct-banner"><img class="ct-bg" src="' + L.asset(D.hero.image) + '" alt="" loading="lazy" decoding="async">' +
-        '<div class="wrap ct-head"><p class="eyebrow">' + esc(t(lang, 'contact.eyebrow')) + '</p>' +
-        '<h2 class="title" id="contactT">' + esc(t(lang, 'contact.page')) + '</h2>' +
+        '<div class="wrap ct-head">' + (crumbs || '') + '<p class="eyebrow">' + esc(t(lang, 'contact.eyebrow')) + '</p>' +
+        (crumbs ? '<h1 class="title" id="contactT">' : '<h2 class="title" id="contactT">') + esc(t(lang, 'contact.page')) + (crumbs ? '</h1>' : '</h2>') +
         '<p class="lead">' + esc(t(lang, 'contact.lead')) + '</p>' +
         '<div class="cta"><a class="btn primary lg" href="' + waUrl(t(lang, 'wa.text')) + '" target="_blank" rel="noopener">' + esc(t(lang, 'cta.order')) + ICON.arrow + '</a>' +
         '<a class="btn lg" href="tel:' + tel + '" dir="ltr">' + esc(D.company.phone) + '</a></div></div></div>' +
@@ -465,13 +465,9 @@
 
     /* Dedicated contact page: intro with WhatsApp and phone buttons, then details and the enquiry form. */
     function contactMain(ctx) {
-      var lang = ctx.lang, L = links(ctx), tel = D.company.phone.replace(/\s/g, '');
-      return '<main id="main"><section class="page-hero" style="--h:150"><div class="wrap">' +
-        '<nav class="crumbs" aria-label="Breadcrumb"><a href="' + L.home + '">' + esc(t(lang, 'cat.home')) + '</a><span aria-hidden="true">/</span><span aria-current="page">' + esc(t(lang, 'contact.page')) + '</span></nav>' +
-        '<div class="ph-text"><p class="eyebrow">' + esc(t(lang, 'contact.eyebrow')) + '</p><h1>' + esc(t(lang, 'contact.page')) + '</h1><p class="lead">' + esc(t(lang, 'contact.lead')) + '</p></div>' +
-        '<div class="cta"><a class="btn primary lg" href="' + waUrl(t(lang, 'wa.text')) + '" target="_blank" rel="noopener">' + esc(t(lang, 'cta.order')) + ICON.arrow + '</a>' +
-        '<a class="btn lg" href="tel:' + tel + '" dir="ltr">' + esc(D.company.phone) + '</a></div></div></section>' +
-        contact(ctx) + '</main>';
+      var lang = ctx.lang, L = links(ctx);
+      var crumbs = '<nav class="crumbs ct-crumbs" aria-label="Breadcrumb"><a href="' + L.home + '">' + esc(t(lang, 'cat.home')) + '</a><span aria-hidden="true">/</span><span aria-current="page">' + esc(t(lang, 'contact.page')) + '</span></nav>';
+      return '<main id="main">' + contact(ctx, crumbs) + '</main>';
     }
 
     function render(ctx) {

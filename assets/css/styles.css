@@ -723,3 +723,7 @@ html[dir="rtl"] .bn-order .bn-bg img { left: auto; right: 0; width: 150%; }
 
 /* WhatsApp button on the left side */
 .wa-float { right: auto; left: max(16px, env(safe-area-inset-left, 0px)); }
+
+/* Contact form confirmation (Netlify Forms + WhatsApp) */
+.form-status { min-height: 1.4em; margin: 0; font-weight: 700; color: var(--accent, #2fbf71); }
+.form-status:empty { display: none; }

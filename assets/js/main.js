@@ -173,7 +173,18 @@
     e.preventDefault();
     var v = function (n) { return (f.elements[n].value || '').trim(); };
     var text = R.t(lang, 'form.template', { name: v('name'), phone: v('phone') || '-', msg: v('msg') });
+    var status = $('#formStatus');
+    /* Open WhatsApp synchronously (inside the user gesture) so popup blockers allow it. */
     window.open('https://wa.me/' + D.company.whatsapp + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+    /* Save a copy in Netlify Forms (dashboard / notifications). */
+    var body = new URLSearchParams(new FormData(f)).toString();
+    fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
+      .then(function (r) { if (!r.ok) throw new Error(); })
+      .catch(function () { /* WhatsApp already opened, so the enquiry still reaches us */ })
+      .then(function () {
+        if (status) status.textContent = R.t(lang, 'form.thanks');
+        f.reset();
+      });
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
   window.addEventListener('resize', function () { if (window.innerWidth > 960) setMenu(false); });

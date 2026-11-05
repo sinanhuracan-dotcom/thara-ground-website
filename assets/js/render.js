@@ -394,12 +394,12 @@
       return '<section class="sec alt" id="contact" aria-labelledby="contactT"><div class="wrap">' +
         sectionHead(lang, 'contact.eyebrow', 'contact.title', null, 'contactT') +
         '<div class="grid-2 contact-grid"><dl class="contact-list card reveal">' + info + '</dl>' +
-        '<form class="card contact-form reveal" id="contactForm" style="--i:1"><h3>' + esc(t(lang, 'form.title')) + '</h3>' +
+        '<form class="card contact-form reveal" id="contactForm" name="contact" method="POST" data-netlify="true" style="--i:1"><input type="hidden" name="form-name" value="contact"><h3>' + esc(t(lang, 'form.title')) + '</h3>' +
         '<label>' + esc(t(lang, 'form.name')) + '<input name="name" autocomplete="name" required></label>' +
         '<label>' + esc(t(lang, 'form.phone')) + '<input name="phone" type="tel" autocomplete="tel" dir="ltr"></label>' +
         '<label>' + esc(t(lang, 'form.msg')) + '<textarea name="msg" rows="4" required></textarea></label>' +
         '<button class="btn primary" type="submit">' + esc(t(lang, 'form.send')) + ICON.arrow + '</button>' +
-        '<p class="muted">' + esc(t(lang, 'form.note')) + '</p></form></div></div></section>';
+        '<p class="muted">' + esc(t(lang, 'form.note')) + '</p><p class="form-status" id="formStatus" role="status" aria-live="polite"></p></form></div></div></section>';
     }
 
     /* ---------- category page ---------- */

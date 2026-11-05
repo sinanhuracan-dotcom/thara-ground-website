@@ -183,7 +183,7 @@
         L('Watermelon', 'بطيخ', '西瓜'),
         L('Sweet melon', 'شمام', '甜瓜')
       ]},
-      { slug: 'tropical-fruit', icon: '🍌', hue: 50, name: N('Tropical & Exotic Fruit', 'الفواكه الاستوائية والغريبة', '热带及特色水果'), items: [
+      { slug: 'tropical-fruit', image: 'img/tropical-fruit.jpg', icon: '🍌', hue: 50, name: N('Tropical & Exotic Fruit', 'الفواكه الاستوائية والغريبة', '热带及特色水果'), items: [
         L('Banana, yellow', 'موز أصفر', '黄香蕉'),
         L('Banana, green', 'موز أخضر', '青香蕉'),
         L('Banana, Indian', 'موز هندي', '印度香蕉'),
